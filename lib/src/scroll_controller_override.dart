@@ -44,6 +44,13 @@ class _ScrollControllerOverrideState extends State<ScrollControllerOverride> {
   }
 
   @override
+  void didUpdateWidget(covariant ScrollControllerOverride oldWidget) {
+    widget.scrollController.removeListener(_onScrollUpdate);
+    widget.scrollController.addListener(_onScrollUpdate);
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   void dispose() {
     widget.scrollController.removeListener(_onScrollUpdate);
     super.dispose();
